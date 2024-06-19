@@ -34,11 +34,13 @@ bl = "***----------------------------------------------------------***"
 ### Spotipy Setup ###
 client_secret_key = os.environ['SPOTIPY_SECRET_KEY']
 
-scope = "user-top-read"
+scope = "user-top-read user-library-read playlist-read-private"
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="eb51bb11a7be4beaa72fe42192bd38cf",
                                             client_secret=client_secret_key,
                                             redirect_uri="http://localhost:8888/callback",
                                             scope=scope))
+
+username = sp.current_user()
 
 
 '''playlists = sp.current_user_playlists(limit=3)
@@ -62,6 +64,7 @@ def get_spotify_artists(ofst):
 
 
 
+
 def get_spotify_tracks(ofst):
     top_tr = sp.current_user_top_tracks(limit=10, offset=ofst, time_range='long_term')
 
@@ -74,6 +77,30 @@ def get_spotify_tracks(ofst):
     else:
         get_spotify_tracks(ofst=(ofst + 10))
 
+
+def get_playlist():
+    spotlistnameid = []
+    list_name = "No Skips" #input("Please enter playlist name.")
+
+    playlists = sp.current_user_playlists()
+
+    for playlist in playlists['items']:
+        if playlist['name'] == list_name:
+            list_name_id = playlist['id']
+            name_found = True
+
+    if name_found == False:
+        print("Oops, that name is not found.")
+        #spotidata_interface()
+        get_playlist()
+
+    spotlistfull = sp.user_playlist(username, playlist_id=list_name_id)
+    for song in (spotlistfull['tracks']['items']): 
+        spotlistnameid.append((song['track']['name'], (song['track']['popularity'])))
+
+
+    print(spotlistnameid)
+    print("\n", bl)
 
 def get_top_ten(ofst, top):
     print("\nHere they are!\n")
@@ -103,8 +130,9 @@ def spotidata_interface():
 def main():
     print("\n", bl)
     print("Hello, welcome to spotidata!\n")
-    spotidata_interface()
+    #spotidata_interface()
     #get_spotify_artists(ofst=0)
+    get_playlist()
 
 if __name__=="__main__":
     main()
