@@ -14,7 +14,7 @@ with open('present.csv', 'r', encoding='utf-8') as file:
     for row in spotifile:
         spotidata.append(row)
 
-
+print(spotidata)
 df = pd.DataFrame(spotidata[1:], columns=spotidata[0])
 
 
