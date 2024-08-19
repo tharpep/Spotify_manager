@@ -9,8 +9,9 @@ def create_playlist():
 
 def ai_song_request():
 
-
-
+Spotipy documentation: https://spotipy.readthedocs.io/en/2.24.0/ 
+Spotify Web API: https://developer.spotify.com/documentation/web-api/reference/get-playlist 
+Open AI API: https://platform.openai.com/docs/guides/chat-completions 
 
 '''
 from openai import OpenAI
