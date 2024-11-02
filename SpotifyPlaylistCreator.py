@@ -16,7 +16,7 @@ Open AI API: https://platform.openai.com/docs/guides/chat-completions
 '''
 from openai import OpenAI
 import spotipy
-import openai
+# import openai
 import os
 from spotipy.oauth2 import SpotifyOAuth
 import pandas as pd
