@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\aatha\OneDrive\Desktop\Spotipy\Spotify_manager\.venv
+set VIRTUAL_ENV=C:\Users\aatha\OneDrive\Desktop\Coding Project Folder\Spotipy\Spotify_manager\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 

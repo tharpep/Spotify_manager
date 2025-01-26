@@ -35,7 +35,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\aatha\OneDrive\Desktop\Spotipy\Spotify_manager\.venv"
+VIRTUAL_ENV="C:\Users\aatha\OneDrive\Desktop\Coding Project Folder\Spotipy\Spotify_manager\.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

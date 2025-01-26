@@ -13,6 +13,10 @@ Spotipy documentation: https://spotipy.readthedocs.io/en/2.24.0/
 Spotify Web API: https://developer.spotify.com/documentation/web-api/reference/get-playlist 
 Open AI API: https://platform.openai.com/docs/guides/chat-completions 
 
+
+venv activate path: .\.venv\Scripts\activate
+
+setx SPOTIPY_SECRET_KEY your_client_secret_here
 '''
 from openai import OpenAI
 import spotipy
@@ -24,6 +28,8 @@ import pandas as pd
 bl = "***----------------------------------------------------------***"
 
 ### Spotipy Setup ###
+
+# print(os.environ.get('SPOTIPY_SECRET_KEY'))
 client_secret_key = os.environ['SPOTIPY_SECRET_KEY']
 
 scope = "user-top-read user-library-read playlist-read-private"
@@ -115,8 +121,7 @@ def get_playlist():
         spotlistfull = sp.next(spotlistfull)
     
     for songname in spotlistnames:
-        print(f"{(", ".join((spotdict[songname]['name']['name'], spotdict[songname]['artists']['name'])))};  Genres:",
-               ", ".join(spotdict[songname]['genres']))
+        print(f"{', '.join((spotdict[songname]['name']['name'], spotdict[songname]['artists']['name']))};  Genres: {', '.join(spotdict[songname]['genres'])}")
 
     print("\n", bl)
 
