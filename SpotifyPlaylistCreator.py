@@ -13,6 +13,8 @@ Spotipy documentation: https://spotipy.readthedocs.io/en/2.24.0/
 Spotify Web API: https://developer.spotify.com/documentation/web-api/reference/get-playlist 
 Open AI API: https://platform.openai.com/docs/guides/chat-completions 
 
+***  I am going to switch to using openrouter for LLM api key
+     so I can test different models.
 
 venv activate path: .\.venv\Scripts\activate
 
@@ -49,7 +51,7 @@ for playlist in playlists['items']:
 
 
 ### Openai Setup ###
-client = OpenAI()
+# client = OpenAI()
 ###
 
 
@@ -136,16 +138,16 @@ def get_track_genre(artistid):
     
     return artist['genres']
 
-def ai_integration():
-    completion = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
-            {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
-        ]
-    )
+# def ai_integration():
+#     completion = client.chat.completions.create(
+#         model="gpt-3.5-turbo",
+#         messages=[
+#             {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
+#             {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
+#         ]
+#     )
 
-    print(completion.choices[0].message)
+#     print(completion.choices[0].message)
 
 def get_top_ten(ofst, top):
     print("\nHere they are!\n")
