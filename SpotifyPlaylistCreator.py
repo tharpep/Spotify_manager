@@ -172,18 +172,58 @@ def find_dupes():
     playlist_name = "Test" # input("\nWhat playlist would you like to look into?")
 
     print("\nFinding duplicated songs...")
+    name_found = False
+    spotdict = {}
+    spotlistnames = {}
+    
+    playlists = sp.current_user_playlists()
+    
 
-    print(f"\nBelow are the found dupliates in {playlist_name}")
+    for playlist in playlists['items']:
+        if playlist['name'] == playlist_name:
+            list_name_id = playlist['id']
+            name_found = True
+
+    if name_found == False:
+        print("Oops, that name is not found.")
+        spotidata_interface()
+        # get_playlist()
+
+    spotlistfull = sp.user_playlist_tracks(username, playlist_id=list_name_id)
+
+    print("\nPlaylist length:", len(spotlistfull['items']))
+    while spotlistfull:
+        # print(len(spotlistfull['items']))
+        for song in spotlistfull['items']: 
+            if song in spotlistnames:
+                temp_input = input("This song looks like a duplicate, would you like to delete it? (Y/N)")
+                _pass = False
+                while not _pass:
+                    if temp_input == "Y":
+                        # delete song from playlist
+                        _pass = True
+                    elif temp_input != "N":
+                        print("Sorry, please input 'Y' or 'N'")
+
+
+
+    print(f"\nBelow are the found duplicates in {playlist_name}")
+
+
+
+def cur_playing():
 
 
 
 def main():
     print("\n", bl)
     print("Hello, welcome to spotidata!\n")
-    spotidata_interface()
+    # spotidata_interface()
     # get_spotify_artists(ofst=0)
     # get_playlist()
     # get_track_genre(artistid="2YZyLoL8N0Wb9xBt1NhZWg")
+    # find_dupes()
+    # cur_playing()
 
 if __name__=="__main__":
     main()
