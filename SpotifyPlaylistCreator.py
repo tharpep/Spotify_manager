@@ -211,7 +211,7 @@ def find_dupes():
 
 
 
-def cur_playing():
+# def cur_playing():
 
 
 
